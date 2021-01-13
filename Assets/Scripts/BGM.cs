@@ -6,7 +6,7 @@ public class BGM : MonoBehaviour
 {
     public AudioClip[] AudioClipArr;
     private AudioSource audioSource;
-
+    int tabcounter = 0;
     float vol = 0.5f;
     float volrate = 0.15f;
     // Start is called before the first frame update
@@ -20,9 +20,11 @@ public class BGM : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
+            audioSource.Stop();
             int rand = Random.Range(0, AudioClipArr.Length);
             audioSource.PlayOneShot(AudioClipArr[rand]);
         }
+       
         if (Input.GetKey(KeyCode.UpArrow)) 
         {
             vol = vol + (volrate * Time.deltaTime);
